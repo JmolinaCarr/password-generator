@@ -18,6 +18,7 @@ function generatePassword () {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  var char = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   passwordText.value = password;
 }
