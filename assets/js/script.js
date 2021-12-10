@@ -1,11 +1,11 @@
 // Assignment code here
 var enter;
 var cofirmNumber;
-var confirmUppsercase;var confirmLowerCase;
-// Get references to the #generate element
+var confirmUppercase;
+var confirmLowerCase;
 var generateBtn = document.querySelector("#generate");
 function generatePassword () {
-  console.log("Hey you click a button!");
+  
 //prompt user for password criteria
 //prompt for lenght between 8 and 128
 enter = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
@@ -19,14 +19,17 @@ if (!enter) {
 } else {
   confirmNumber = confirm("Will this contain numbers?");
   confirmCharacter = confirm("Will this contain Special characters?");
-  confirmUppercase = confirm("Will this contain Lowercase characters?");
+  confirmUppercase = confirm("Will this contain Uppercase characters?");
+  confirmLowercase = confirm("Will this contain lowercase characters?");
+};
+//no selection is done
+if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
+  choices = alert("You must choose a criteria!");
+
+
 }
-//prompt for lowercase, uppercase and special charaters
- 
 //display generated password.
-
-
-  return "Generated password will go here!";
+return "Generated password will go here!";
 }
 
 // Write password to the #password input
