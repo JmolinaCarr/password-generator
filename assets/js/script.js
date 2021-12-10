@@ -25,7 +25,8 @@ if (!enter) {
 //no selection is done
 if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
   choices = alert("You must choose a criteria!");
-
+}
+else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
 
 }
 //display generated password.
@@ -36,7 +37,10 @@ return "Generated password will go here!";
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  var char = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var number = "0123456789";
+  var charLowercase = "abcdefghijklmnopqrstuvwxyz";
+  var symbols = "!@#$%^&*()_+()";
+  var charUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   passwordText.value = password;
 }
