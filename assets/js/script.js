@@ -7,6 +7,7 @@ var confirmCharacter;
 var generateBtn = document.querySelector("#generate");
 var choices
 lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 characters = ["!", "@", "#", "$", "%", "^", "&", "*", "("];
 function generatePassword () {
@@ -31,10 +32,59 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
   choices = alert("You must choose a criteria!");
 }
 else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
-  result = number.concat(charLowercase, symbols, charUppercase)
+  result = number.concat(lowercase, symbols, uppercase);
 }
+// Else if for 3 positive options
+else if (confirmCharacter && confirmNumber && confirmUppercase) {
+  choices = character.concat(number, uppsercase);
+}
+else if (confirmCharacter && confirmNumber && confirmLowercase) {
+  choices = character.concat(number, lowercase);
+}
+else if (confirmCharacter && confirmLowercase && confirmUppercase) {
+  choices = character.concat(lowercase, uppercase);
+}
+else if (confirmNumber && confirmLowercase && confirmUppercase) {
+  choices = number.concat(uppercase, lowercase);
+}
+// Else if for 2 positive options 
+else if (confirmCharacter && confirmNumber) {
+  choices = character.concat(number);
+
+} else if (confirmCharacter && confirmLowercase) {
+  choices = character.concat(lowercase);
+
+} else if (confirmCharacter && confirmUppercase) {
+  choices = character.concat(uppercase);
+}
+else if (confirmLowercase && confirmNumber) {
+  choices = lowercase.concat(number);
+
+} else if (confirmLowercase && confirmUppercase) {
+  choices = lowercase.concat(uppercase);
+
+} else if (confirmNumber && confirmUppercase) {
+  choices = number.concat(uppercase);
+}
+// Else if for 1 positive option
+else if (confirmCharacter) {
+  choices = character;
+}
+else if (confirmNumber) {
+  choices = number;
+}
+else if (confirmLowercase) {
+  choices = lowercase;
+}
+
+for (var i = 0; i <enter; i++){
+  choices = choices[Math.floor(Math.random() * choices.length)];
+  
+}
+
+var password = [];
 //display generated password.
-return 
+return "password";
 }
 
 // Write password to the #password input
@@ -46,10 +96,6 @@ function writePassword(numbers, lowercase, uppercase, characters) {
   passwordText.value = password;
 }
 
-for (var i = 0; i <= password.length; i++) {
-  var randomNumber = math.floor(Math.random() * char.length);
-  password += char.substring(randomNumber, randomNumber +1);
 
-}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
