@@ -5,11 +5,13 @@ var confirmUppercase;
 var confirmLowerCase;
 var confirmCharacter;
 var generateBtn = document.querySelector("#generate");
-var choices
+var choices;
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-character = ["!", "@", "#", "$", "%", "^", "&", "*", "("];
+characters = ["!", "@", "#", "$", "%", "^", "&", "*", "("];
 convert = [];
+var choices;
+//convert to uppercase
 var toUpper = function(upper) {
   return upper.toUpperCase();
 };
@@ -36,34 +38,34 @@ if (!enter) {
   confirmLowercase = confirm("Will this contain lowercase characters?");
 };
 //no selection is done
-if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
+if (!confirmCharacters && !confirmNumber && !confirmUppercase && !confirmLowercase) {
   choices = alert("You must choose a criteria!");
 }
-else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
-  choices = character.concat(number, alphabet, alphabetUpper);
+else if (confirmCharacters && confirmNumber && confirmUppercase && confirmLowercase) {
+  choices = characters.concat(number, alphabet, alphabetUpper);
 }
-// Else if for 3 positive options
-else if (confirmCharacter && confirmNumber && confirmUppercase) {
-  choices = character.concat(number, alphabetUpper);
+// selecting all option from the criteria
+else if (confirmCharacters && confirmNumber && confirmUppercase) {
+  choices = character.concat(number, alphabetUpper, character);
 }
-else if (confirmCharacter && confirmNumber && confirmLowercase) {
-  choices = character.concat(number, lowercase);
+else if (confirmCharacters && confirmNumber && confirmLowercase) {
+  choices = character.concat(number, alphabet);
 }
-else if (confirmCharacter && confirmLowercase && confirmUppercase) {
-  choices = character.concat(alphabet, alphabetUpper);
+else if (confirmCharacters && confirmLowercase && confirmUppercase) {
+  choices = characters.concat(alphabet, alphabetUpper);
 }
 else if (confirmNumber && confirmLowercase && confirmUppercase) {
   choices = number.concat(alphabetUpper, alphabet);
 }
-// Else if for 2 positive options 
-else if (confirmCharacter && confirmNumber) {
-  choices = character.concat(number);
+// selecting 2 option from the criteria
+else if (confirmCharacters && confirmNumber) {
+  choices = characters.concat(number);
 
-} else if (confirmCharacter && confirmLowercase) {
+} else if (confirmCharacters && confirmLowercase) {
   choices = character.concat(alphabet);
 
-} else if (confirmCharacter && confirmUppercase) {
-  choices = character.concat(alphabetUpper);
+} else if (confirmCharacters && confirmUppercase) {
+  choices = characters.concat(alphabetUpper);
 }
 else if (confirmLowercase && confirmNumber) {
   choices = alphabet.concat(number);
@@ -74,31 +76,39 @@ else if (confirmLowercase && confirmNumber) {
 } else if (confirmNumber && confirmUppercase) {
   choices = number.concat(alphabetUpper);
 }
-// Else if for 1 positive option
-else if (confirmCharacter) {
-  choices = character;
+// selecting 1 option from the criteria
+else if (confirmCharacters) {
+  choices = characters;
 }
 else if (confirmNumber) {
   choices = number;
 }
 else if (confirmLowercase) {
   choices = alphabet;
+}
+
+else if (confirmUppercase) {
+  choices = space.concat(alphabetUppercase);
 };
 
 var password = [];
 
 for (var i = 0; i <enter; i++){
-  choices = choices[Math.floor(Math.random() * choices.length)];
-  
+  var pickChoices = choices[Math.floor(Math.random() * choices.length)];
+  password.push(pickChoices);
 }
 
 
 //display generated password.
-return "password";
+var pwd = password.join("");
+userInput(pwd);
+return pwd;
 }
-
+ function userInput(pwd) {
+   document.getElementById("password").value = pwd;
+ }
 // Write password to the #password input
-function writePassword(numbers, lowercase, uppercase, characters) {
+function writePassword(alphabet, alphabetUpper, number, characters) {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
